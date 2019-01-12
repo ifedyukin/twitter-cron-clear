@@ -1,5 +1,8 @@
 # twitter-cron-clear
-[![Deploy to Heroku](https://img.shields.io/badge/Deploy_to-Heroku-9777ba.svg)](https://heroku.com/deploy?template=https://github.com/ifedyukin/twitter-cron-clear)    
+[![deploy to Heroku](https://img.shields.io/badge/deploy_to-Heroku-9777ba.svg)](https://heroku.com/deploy?template=https://github.com/ifedyukin/twitter-cron-clear)
+[![Dependency status](https://david-dm.org/ifedyukin/twitter-cron-clear/status.png)](https://david-dm.org/ifedyukin/twitter-cron-clear)
+[![Twitter for developers](https://img.shields.io/badge/developers_apps-Twitter-5800a3.svg)](https://developer.twitter.com/en/apps)
+
 
 ## Commands
 * `npm run purge` - delete all your tweets;
@@ -19,4 +22,4 @@
 * `ACCESS_SECRET` - Twitter access token secret;
 
 ## CRON usage
-Just put `npm run cron` to daily CRON job.
+Just put `npm run cron` to daily CRON job. But it works minimum for daily run.
