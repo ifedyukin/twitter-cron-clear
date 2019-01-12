@@ -1,0 +1,9 @@
+const YESTERDAY = 24 * 60 * 60 * 1000;
+const {TIMELINE_GET_TIMEOUT = 500, TIMELINE_COUNT = 200, LIFE = YESTERDAY * 28} = process.env;
+
+module.exports = {
+  LIFE,
+  YESTERDAY,
+  TIMELINE_COUNT,
+  TIMELINE_GET_TIMEOUT
+};

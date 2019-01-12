@@ -1,0 +1,12 @@
+{
+  "name": "twitter-cron-clear",
+  "description": "Twitter cron clear util",
+  "repository": "https://github.com/ifedyukin/twitter-cron-clear",
+  "website": "https://github.com/ifedyukin/twitter-cron-clear#webpurple-telegram-bot",
+  "keywords": ["node", "twitter", "cron", "delete"],
+  "image": "heroku/nodejs",
+  "addons": [
+    "scheduler:standard",
+    "mongolab:sandbox"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "twitter-cron-clear",
+  "version": "1.0.0",
+  "description": "Twitter cron clear util",
+  "scripts": {
+    "purge": "node src/purge.js",
+    "store": "node src/store.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifedyukin/twitter-cron-clear.git"
+  },
+  "author": "Igor Fedyukin <me@ifedyukin.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ifedyukin/twitter-cron-clear/issues"
+  },
+  "homepage": "https://github.com/ifedyukin/twitter-cron-clear#readme",
+  "dependencies": {
+    "mongoose": "5.4.3",
+    "twitter": "1.7.1"
+  }
+}
