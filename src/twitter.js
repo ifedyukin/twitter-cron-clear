@@ -1,5 +1,5 @@
 const Twitter = require('twitter');
-const {TIMELINE_COUNT} = require('./constants');
+const { TIMELINE_COUNT } = require('./constants');
 const {
   USER_NAME,
   CONSUMER_KEY,
@@ -15,17 +15,17 @@ const twitter = Twitter({
   access_token_secret: ACCESS_SECRET
 });
 
-const deleteTweet = (tweet) => {
+const deleteTweet = tweet => {
   if (!tweet) return Promise.resolve();
-  const {retweeted, id_str: id} = tweet;
+  const { retweeted, id_str: id } = tweet;
 
   return retweeted
-    ? twitter.post('statuses/unretweet', {id})
-    : twitter.post('statuses/destroy', {id});
+    ? twitter.post('statuses/unretweet', { id })
+    : twitter.post('statuses/destroy', { id });
 };
 
 const requestTimeline = (next = null, since = null) => {
-  const params = {screen_name: USER_NAME, count: TIMELINE_COUNT};
+  const params = { screen_name: USER_NAME, count: TIMELINE_COUNT };
   if (next) params.max_id = next;
   if (since) params.since_id = since;
   return twitter.get('statuses/user_timeline', params);

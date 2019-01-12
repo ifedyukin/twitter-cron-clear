@@ -1,14 +1,14 @@
-const {YESTERDAY} = require('./constants');
+const { YESTERDAY } = require('./constants');
 
 const getLast = tweets => tweets.slice(-1)[0] || {};
 
-const getLastId = (tweets) => {
-  const {id_str: last} = getLast(tweets);
+const getLastId = tweets => {
+  const { id_str: last } = getLast(tweets);
   return last;
 };
 
-const getLastDate = (tweets) => {
-  const {created_at: createdAt} = getLast(tweets);
+const getLastDate = tweets => {
+  const { created_at: createdAt } = getLast(tweets);
   return createdAt;
 };
 

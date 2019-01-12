@@ -6,7 +6,8 @@
     "purge": "node src/purge.js",
     "store": "node src/store.js",
     "outdated": "node src/outdated.js",
-    "cron": "npm run store && npm run outdated"
+    "cron": "npm run store && npm run outdated",
+    "format": "prettier --single-quote --write \"src/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "dependencies": {
     "mongoose": "5.4.3",
     "twitter": "1.7.1"
+  },
+  "devDependencies": {
+    "prettier": "1.15.3"
   }
 }

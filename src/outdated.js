@@ -1,7 +1,7 @@
-const {deleteTweet} = require('./twitter');
-const {connectMongoDB, clearDB, getOutdatedTweets} = require('./mongoose');
+const { deleteTweet } = require('./twitter');
+const { connectMongoDB, clearDB, getOutdatedTweets } = require('./mongoose');
 
-const removeTweets = async (tweets) => {
+const removeTweets = async tweets => {
   // try {
   //   await tweets.forEach(deleteTweet);
   // } catch (err) {
