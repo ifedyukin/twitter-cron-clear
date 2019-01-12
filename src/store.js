@@ -1,4 +1,4 @@
-const { twitter, requestTimeline } = require('./twitter');
+const { requestTimeline } = require('./twitter');
 const { connectMongoDB, storeToDB } = require('./mongoose');
 const { getLastId, getLastDate, isOld, isYesterday } = require('./utils');
 

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const { LIFE } = require('./constants');
-const {
-  MONGODB_URI
-} = process.env;
+const { MONGODB_URI } = process.env;
 
 const connectMongoDB = async () => {
   try {
@@ -51,7 +49,7 @@ const storeToDB = async tweets => {
   return Promise.resolve();
 };
 
-const getOutdatedTweets = async date => {
+const getOutdatedTweets = async () => {
   const condition = { date: { $lt: new Date() - new Date(LIFE) } };
   const outdatedTweets = await Tweet.find(condition);
   // TODO: remove

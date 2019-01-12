@@ -1,7 +1,6 @@
-const { promisify } = require('util');
 const { getLastId } = require('./utils');
 const { TIMELINE_GET_TIMEOUT } = require('./constants');
-const { twitter, deleteTweet, requestTimeline } = require('./twitter');
+const { deleteTweet, requestTimeline } = require('./twitter');
 
 const purge = async lastId => {
   try {
