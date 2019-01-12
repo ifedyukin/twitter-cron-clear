@@ -42,10 +42,9 @@ const storeToDB = async (tweets) => {
 };
 
 const getOutdatedTweets = async (date) => {
-  console.log(new Date() - new Date(LIFE), LIFE, new Date(LIFE));
   const condition = {date: {'$lt': new Date() - new Date(LIFE)}};
   const outdatedTweets = await Tweet.find(condition);
-  console.log(outdatedTweets);
+  // TODO: remove
   await Backup.create(outdatedTweets.map(({id_str, date}) => ({id_str, date})));
   return [outdatedTweets, condition];
 };
