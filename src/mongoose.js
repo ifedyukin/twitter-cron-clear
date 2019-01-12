@@ -20,8 +20,7 @@ const Tweet = mongoose.model('tweets', new mongoose.Schema({
 // TODO: remove
 const Backup = mongoose.model('backup', new mongoose.Schema({
   date: {type: Date, required: true},
-  id_str: {type: String, required: true},
-  retweeted: {type: Boolean, required: true}
+  id_str: {type: String, required: true}
 }));
 
 const storeToDB = async (tweets) => {
@@ -45,11 +44,11 @@ const storeToDB = async (tweets) => {
 const getOutdatedTweets = async (date) => {
   const condition = {date: {'$lt': new Date() - new Date(LIFE)}};
   const outdatedTweets = await Tweet.find(condition);
-  Backup.create(outdatedTweets);
+  await Backup.create(outdatedTweets.map(({id_str, date}) => ({id_str, date})));
   return [outdatedTweets, condition];
 };
 
-const clearDB = async (condition) => Tweet.remove(condition);
+const clearDB = async (condition) => Tweet.deleteMany(condition);
 
 module.exports = {
   clearDB,
