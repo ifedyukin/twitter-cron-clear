@@ -1,6 +1,5 @@
 const Twitter = require('twitter');
 const {TIMELINE_COUNT} = require('./constants');
-
 const {
   USER_NAME,
   CONSUMER_KEY,
@@ -18,9 +17,7 @@ const twitter = Twitter({
 
 const deleteTweet = (tweet) => {
   if (!tweet) return Promise.resolve();
-
   const {retweeted, id_str: id} = tweet;
-  console.log(`Deleting ${id}`);
 
   return retweeted
     ? twitter.post('statuses/unretweet', {id})

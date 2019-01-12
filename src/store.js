@@ -1,5 +1,5 @@
-const {connectMongoDB, storeToDB} = require('./mongoose');
 const {twitter, requestTimeline} = require('./twitter');
+const {connectMongoDB, storeToDB} = require('./mongoose');
 const {getLastId, getLastDate, isOld, isYesterday} = require('./utils');
 
 const selectYesterday = ({created_at: date}) => isYesterday(new Date(date));
@@ -18,10 +18,10 @@ const storeDailyTweets = async (lastId) => {
   }
 };
 
-const init = async () => {
+const store = async () => {
   await connectMongoDB();
   await storeDailyTweets();
   process.exit(0);
 };
 
-init();
+store();

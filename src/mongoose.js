@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {LIFE} = require('./constants');
 const {MONGODB_URI} = process.env;
 
 const connectMongoDB = async () => {
@@ -12,21 +13,28 @@ const connectMongoDB = async () => {
 
 const Tweet = mongoose.model('tweets', new mongoose.Schema({
   date: {type: Date, required: true},
-  id: {type: String, required: true},
+  id_str: {type: String, required: true},
+  retweeted: {type: Boolean, required: true}
+}));
+
+// TODO: remove
+const Backup = mongoose.model('backup', new mongoose.Schema({
+  date: {type: Date, required: true},
+  id_str: {type: String, required: true},
   retweeted: {type: Boolean, required: true}
 }));
 
 const storeToDB = async (tweets) => {
   const mongoTweets = tweets
-    .map(({created_at, id_str: id, retweeted}) => ({
+    .map(({created_at, id_str, retweeted}) => ({
       date: new Date(created_at),
       retweeted,
-      id
+      id_str
     }));
 
   try {
     await Tweet.create(mongoTweets);
-    console.log(`Save tweets`);
+    console.log(`Tweets were saved`);
   } catch (err) {
     console.error(err);
   }
@@ -34,7 +42,18 @@ const storeToDB = async (tweets) => {
   return Promise.resolve();
 };
 
+const getOutdatedTweets = async (date) => {
+  const condition = {date: {'$lt': new Date() - new Date(LIFE)}};
+  const outdatedTweets = await Tweet.find(condition);
+  Backup.create(outdatedTweets);
+  return [outdatedTweets, condition];
+};
+
+const clearDB = async (condition) => Tweet.remove(condition);
+
 module.exports = {
+  clearDB,
   storeToDB,
-  connectMongoDB
+  connectMongoDB,
+  getOutdatedTweets
 };

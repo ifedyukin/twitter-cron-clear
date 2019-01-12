@@ -4,7 +4,9 @@
   "description": "Twitter cron clear util",
   "scripts": {
     "purge": "node src/purge.js",
-    "store": "node src/store.js"
+    "store": "node src/store.js",
+    "outdated": "node src/outdated.js",
+    "cron": "npm run store && npm run outdated"
   },
   "repository": {
     "type": "git",

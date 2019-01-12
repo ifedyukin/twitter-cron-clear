@@ -12,7 +12,6 @@ const getLastDate = (tweets) => {
   return createdAt;
 };
 
-
 const getNow = () => new Date();
 
 const isOld = date => date < getNow() - YESTERDAY;
